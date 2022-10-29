@@ -18,7 +18,12 @@
  */
 
 #include <iostream>
+#include <cstdlib>
 #include <vector>
+#include <cfloat>
+#include <algorithm>
+#include <cmath>
+#include <iomanip>
 
 /**
  * @brief This class contains the implementation of the map simulation.
@@ -27,6 +32,7 @@
  * 
  */
 class Map {
- public:
- private:
+  public:
+    Map();
+  private:
 };
