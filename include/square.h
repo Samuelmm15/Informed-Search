@@ -36,6 +36,7 @@
 #define MAGENT_GRND "\033[1;45m"
 #define RESET "\033[0m"
 
+
 /**
  * @brief This class contains the implementation of the different squares of the map simulation.
  * 
@@ -48,13 +49,13 @@ class Square {
     ~Square();
     void setI(size_t);
     void setJ(size_t);
-    // void setState(size_t);
+    void setState(size_t);
     size_t getI() const;
     size_t getJ() const;
-    // size_t getState() const;
-    // std::ostream& WriteSquare(std::ostream&);
+    size_t getState() const;
+    std::ostream& WriteSquare(std::ostream&);
   private:
     size_t i_;
     size_t j_;
-    // size_t state_;
+    size_t state_;
 };

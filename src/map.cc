@@ -26,7 +26,7 @@ Map::Map(size_t rows, size_t cols, size_t start_row, size_t start_col, size_t go
   setGoal(goal_row, goal_col);
   map_ = new Square *[rows, cols];
   for(size_t i = 0; i < rows; i++)
-    for(size_t j = 0; j < cols;j++)
+    for(size_t j = 0; j < cols; j++)
       map_[i * cols + j] = new Square(i, j);
 };
 
@@ -61,7 +61,7 @@ size_t Map::getN() const {
 std::ostream& Map::WhiteLine(std::ostream &os) {
   size_t count = 0;
   os << "\n" << "    " << WHITE_GRND << " ";
-  while(count<getN()){
+  while(count < getN()) {
     os << "      ";
     count++;
   }
@@ -78,9 +78,9 @@ void Map::writeMap(std::ostream &os) {
   for (size_t i = 0; i < getM(); i++) {
     WhiteLine(os);
     os << std::setfill('0') << std::setw(3) << i << " " << WHITE_GRND << " " << RESET;
-    // for (size_t j = 0; j < getN(); j++) {
-    //   map_[i * getN() + j]->WriteSquare(os);
-    // }
+    for (size_t j = 0; j < getN(); j++) {
+      map_[i * getN() + j]->WriteSquare(os);
+    }
     os << WHITE_GRND << " " << RESET;
   }
   WhiteLine(os);

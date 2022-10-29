@@ -19,6 +19,7 @@
 #include <iostream>
 
 #include "../include/map.h"
+#include "../include/square.h"
 
 int main() {
   size_t rows, cols;
@@ -45,7 +46,6 @@ int main() {
   std::cin >> goal_y;
 
   Map map(rows, cols, start_x, start_y, goal_x, goal_y);
-
   map.writeMap(std::cout);
 }
 
