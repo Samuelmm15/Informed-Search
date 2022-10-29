@@ -17,22 +17,43 @@
  *
  */
 
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-#include <cfloat>
+#pragma once
+
 #include <algorithm>
+#include <cfloat>
 #include <cmath>
+#include <cstdlib>
 #include <iomanip>
+#include <iostream>
+#include <vector>
+
+#include "../include/square.h"
 
 /**
  * @brief This class contains the implementation of the map simulation.
- * 
- * 
- * 
+ *
+ *
+ *
  */
 class Map {
   public:
-    Map();
+    Map() = default;
+    Map(size_t rows, size_t cols, size_t start_row, size_t start_col, size_t goal_row, size_t goal_col);
+    ~Map();
+    void setM(size_t rows);
+    void setN(size_t cols);
+    void setStart(size_t start_row, size_t start_col);
+    void setGoal(size_t goal_row, size_t goal_col);
+    size_t getM() const;
+    size_t getN() const;
+    std::ostream& WhiteLine(std::ostream& os);
+    void writeMap(std::ostream &os);
   private:
+    size_t M_;  // Number of rows
+    size_t N_;  // Number of columns
+    size_t start_row_;  // Start row
+    size_t start_col_; // Start column
+    size_t goal_row_;  // Goal row
+    size_t goal_col_;  // Goal column
+    Square **map_;  // Map
 };
