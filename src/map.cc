@@ -63,11 +63,13 @@ size_t Map::getN() const {
 void Map::setInitialState(size_t i, size_t j) {
   initial_ = i * getN() + j;
   map_[i * getN() + j]->setState(1);
+  setStart(i, j);
 };
 
 void Map::setGoalState(size_t i, size_t j) {
   goal_ = i * getN() + j;
   map_[i * getN() + j]->setState(2);
+  setGoal(i, j);
 };
 
 std::ostream& Map::WhiteLine(std::ostream &os) {
@@ -82,7 +84,43 @@ std::ostream& Map::WhiteLine(std::ostream &os) {
   return os;
 }
 
-void Map::writeMap(std::ostream &os) {
+void Map::RouteSearch() {
+  if (start_row_ <= goal_row_) { /// Caso de avance
+    if (start_row_ == goal_row_) { /// Caso en el que se encuentra en la misma fila
+      if (start_col_ < goal_col_) { /// Caso de avance en la misma fila
+        for (size_t i = start_col_ + 1; i <= goal_col_ - 1; i++) {
+          map_[start_row_ * getN() + i]->setState(3);
+        }
+      } else { /// Caso de retroceso en la misma fila
+        for (size_t i = start_col_ + 1; i >= goal_col_ - 1; i--) {
+          map_[start_row_ * getN() + i]->setState(3);
+        }
+      }
+    } else {
+      for (size_t i = start_row_ + 1; i <= goal_row_; i++) {
+        map_[i * getN() + start_col_]->setState(3);
+      }
+      for (size_t i = start_col_ + 1; i <= goal_col_ - 1; i++) {
+        map_[goal_row_ * getN() + i]->setState(3);
+      }
+    }
+  } else { /// Caso de retroceso
+    for (size_t i = start_row_ - 1; i >= goal_row_; i--) {
+      map_[i * getN() + start_col_]->setState(3);
+    }
+    if (start_col_ < goal_col_) { /// Caso de avance en la misma fila
+      for (size_t i = start_col_ + 1; i <= goal_col_ - 1; i++) {
+        map_[goal_row_ * getN() + i]->setState(3);
+      }
+    } else { /// Caso de retroceso en la misma fila
+      for (size_t i = start_col_ + 1; i >= goal_col_ - 1; i--) {
+        map_[goal_row_ * getN() + i]->setState(3);
+      }
+    }
+  }
+};
+
+void Map::WriteMap(std::ostream &os) {
   os << "   "; 
   for (size_t a = 0; a < getN(); a++){
     os << "    " << std::setfill('0') << std::setw(2) << a;
