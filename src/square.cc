@@ -53,11 +53,14 @@ size_t Square::getState() const {
 std::ostream& Square::WriteSquare(std::ostream& os) {
   size_t auxiliary = getState();
   switch ( auxiliary ) {
-    case 2:
+    case 1:
       os << WHITE_GRND << "  " << RED_GRND << "  " << WHITE_GRND << "  " << RESET;
       break;
-    case 3:
+    case 2:
       os << WHITE_GRND << "  " << GREEN_GRND << "  " << WHITE_GRND << "  " << RESET;
+      break;
+    case 3: 
+      os << WHITE_GRND << "  " << MAGENT_GRND << "  " << WHITE_GRND << "  " << RESET;
       break;
     default:
       os << WHITE_GRND << "  " << BLACK_GRND << "  " << WHITE_GRND << "  " << RESET;

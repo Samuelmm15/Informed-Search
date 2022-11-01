@@ -49,6 +49,7 @@ class Map {
     void setInitialState(size_t i, size_t j);
     void setGoalState(size_t i, size_t j);
     std::ostream& WhiteLine(std::ostream& os);
+    void path(std::ostream& os);
     void writeMap(std::ostream &os);
   private:
     size_t M_;  // Number of rows
