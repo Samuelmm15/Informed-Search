@@ -60,6 +60,16 @@ size_t Map::getN() const {
   return N_;
 };
 
+void Map::setInitialState(size_t i, size_t j) {
+  initial_ = i * getN() + j;
+  map_[i * getN() + j]->setState(2);
+};
+
+void Map::setGoalState(size_t i, size_t j) {
+  goal_ = i * getN() + j;
+  map_[i * getN() + j]->setState(3);
+};
+
 std::ostream& Map::WhiteLine(std::ostream &os) {
   size_t count = 0;
   os << "\n" << "    " << WHITE_GRND << " ";

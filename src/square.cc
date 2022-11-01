@@ -34,9 +34,9 @@ void Square::setJ(size_t j) {
   j_ = j;
 };
 
-// void Square::setState(size_t state) {
-//   state_ = state;
-// };
+void Square::setState(size_t state) {
+  state_ = state;
+};
 
 size_t Square::getI() const {
   return i_;
@@ -51,6 +51,17 @@ size_t Square::getState() const {
 };
 
 std::ostream& Square::WriteSquare(std::ostream& os) {
-  os << WHITE_GRND << "  " << BLACK_GRND << "  " << WHITE_GRND << "  " << RESET;
+  size_t auxiliary = getState();
+  switch ( auxiliary ) {
+    case 2:
+      os << WHITE_GRND << "  " << RED_GRND << "  " << WHITE_GRND << "  " << RESET;
+      break;
+    case 3:
+      os << WHITE_GRND << "  " << GREEN_GRND << "  " << WHITE_GRND << "  " << RESET;
+      break;
+    default:
+      os << WHITE_GRND << "  " << BLACK_GRND << "  " << WHITE_GRND << "  " << RESET;
+      break;
+  }
   return os;
 };

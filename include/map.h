@@ -46,11 +46,15 @@ class Map {
     void setGoal(size_t goal_row, size_t goal_col);
     size_t getM() const;
     size_t getN() const;
+    void setInitialState(size_t i, size_t j);
+    void setGoalState(size_t i, size_t j);
     std::ostream& WhiteLine(std::ostream& os);
     void writeMap(std::ostream &os);
   private:
     size_t M_;  // Number of rows
     size_t N_;  // Number of columns
+    size_t initial_; // Initial state
+    size_t goal_; // Goal state
     size_t start_row_;  // Start row
     size_t start_col_; // Start column
     size_t goal_row_;  // Goal row
