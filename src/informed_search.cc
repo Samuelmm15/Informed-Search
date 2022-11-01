@@ -47,7 +47,7 @@ int main() {
 
   Map map(rows, cols, start_x, start_y, goal_x, goal_y);
   map.setInitialState(start_x, start_y);
-  // map.setGoalState(goal_x, goal_y);
+  map.setGoalState(goal_x, goal_y);
   map.writeMap(std::cout);
 }
 
