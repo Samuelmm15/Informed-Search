@@ -7,4 +7,4 @@ all: ${OBJS}
 	$(CC) $(CXXFLAGS) -o informed_search ${OBJS}
 
 clean: 
-	rm -rf *.o informed_search
+	rm -rf src/*.o informed_search

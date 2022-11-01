@@ -25,9 +25,11 @@ Map::Map(size_t rows, size_t cols, size_t start_row, size_t start_col, size_t go
   setStart(start_row, start_col);
   setGoal(goal_row, goal_col);
   map_ = new Square *[rows, cols];
-  for(size_t i = 0; i < rows; i++)
-    for(size_t j = 0; j < cols; j++)
+  for(size_t i = 0; i < rows; i++){
+    for(size_t j = 0; j < cols; j++){
       map_[i * cols + j] = new Square(i, j);
+    }
+  }
 };
 
 Map::~Map() {};
