@@ -51,6 +51,10 @@ class Map {
     std::ostream& WhiteLine(std::ostream& os);
     void RouteSearch();
     void WriteMap(std::ostream &os);
+    void StartPreparation();
+    double Heuristic(size_t i, size_t j);
+    std::vector<size_t> getNeighbors(size_t nodeId);
+    void AStarAlgorithm();
   private:
     size_t M_;  // Number of rows
     size_t N_;  // Number of columns
@@ -61,4 +65,8 @@ class Map {
     size_t goal_row_;  // Goal row
     size_t goal_col_;  // Goal column
     Square **map_;  // Map
+    bool flag_;
+    std::vector<size_t> _closedSet;
+    std::vector<size_t> _openSet;
+    std::vector<size_t> _path;
 };

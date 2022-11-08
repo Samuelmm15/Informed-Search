@@ -1,20 +1,20 @@
 /**
- * 
+ *
  * Universidad de La Laguna
  * Escuela Superior de Ingeniería y Tecnología
  * Grado en Ingeniería Informática
  * Asignatura: Inteligencia Artificial
- * Curso: 3º
+ * currentso: 3º
  * Práctica 2: Búsqueda Informada
  * @file map.h
- * @authors Cheuk Kelly Ng Pante (alu0101364544@ull.edu.es) 
+ * @authors Cheuk Kelly Ng Pante (alu0101364544@ull.edu.es)
  *          Samuel Martín Morales (alu0101359526@ull.edu.es)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2022-10-29
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include "../include/map.h"
@@ -25,24 +25,20 @@ Map::Map(size_t rows, size_t cols, size_t start_row, size_t start_col, size_t go
   setStart(start_row, start_col);
   setGoal(goal_row, goal_col);
   map_ = new Square *[rows * cols];
-  for(size_t i = 0; i < rows; i++){
-    for(size_t j = 0; j < cols; j++){
+  for (size_t i = 0; i < rows; i++) {
+    for (size_t j = 0; j < cols; j++) {
       map_[i * cols + j] = new Square(i, j);
     }
   }
 };
 
-Map::~Map() {};
-  
-void Map::setM(size_t rows) {
-  M_ = rows;
-};
+Map::~Map(){};
 
-void Map::setN(size_t cols) {
-  N_ = cols;
-};
+void Map::setM(size_t rows) { M_ = rows; };
 
-void Map::setStart(size_t start_row, size_t start_col) { 
+void Map::setN(size_t cols) { N_ = cols; };
+
+void Map::setStart(size_t start_row, size_t start_col) {
   start_row_ = start_row;
   start_col_ = start_col;
 };
@@ -52,13 +48,9 @@ void Map::setGoal(size_t goal_row, size_t goal_col) {
   goal_col_ = goal_col;
 };
 
-size_t Map::getM() const {
-  return M_;
-};
+size_t Map::getM() const { return M_; };
 
-size_t Map::getN() const {
-  return N_;
-};
+size_t Map::getN() const { return N_; };
 
 void Map::setInitialState(size_t i, size_t j) {
   initial_ = i * getN() + j;
@@ -72,10 +64,10 @@ void Map::setGoalState(size_t i, size_t j) {
   setGoal(i, j);
 };
 
-std::ostream& Map::WhiteLine(std::ostream &os) {
+std::ostream &Map::WhiteLine(std::ostream &os) {
   size_t count = 0;
   os << "\n" << "    " << WHITE_GRND << " ";
-  while(count < getN()) {
+  while (count < getN()) {
     os << "      ";
     count++;
   }
@@ -85,13 +77,14 @@ std::ostream& Map::WhiteLine(std::ostream &os) {
 }
 
 void Map::RouteSearch() {
-  if (start_row_ <= goal_row_) { /// Caso de avance
-    if (start_row_ == goal_row_) { /// Caso en el que se encuentra en la misma fila
-      if (start_col_ < goal_col_) { /// Caso de avance en la misma fila
+  if (start_row_ <= goal_row_) {
+    if (start_row_ ==
+        goal_row_) {
+      if (start_col_ < goal_col_) {  /// Advance to the same row and to the right
         for (size_t i = start_col_ + 1; i <= goal_col_ - 1; i++) {
           map_[start_row_ * getN() + i]->setState(3);
         }
-      } else { /// Caso de retroceso en la misma fila
+      } else {  /// Retreat to the same row and to the left
         for (size_t i = start_col_ + 1; i >= goal_col_ - 1; i--) {
           map_[start_row_ * getN() + i]->setState(3);
         }
@@ -104,15 +97,15 @@ void Map::RouteSearch() {
         map_[goal_row_ * getN() + i]->setState(3);
       }
     }
-  } else { /// Caso de retroceso
+  } else {  /// Retreat case
     for (size_t i = start_row_ - 1; i >= goal_row_; i--) {
       map_[i * getN() + start_col_]->setState(3);
     }
-    if (start_col_ < goal_col_) { /// Caso de avance en la misma fila
+    if (start_col_ < goal_col_) {  /// Ad
       for (size_t i = start_col_ + 1; i <= goal_col_ - 1; i++) {
         map_[goal_row_ * getN() + i]->setState(3);
       }
-    } else { /// Caso de retroceso en la misma fila
+    } else {  /// Retreat to the same row and to the left
       for (size_t i = start_col_ + 1; i >= goal_col_ - 1; i--) {
         map_[goal_row_ * getN() + i]->setState(3);
       }
@@ -121,8 +114,8 @@ void Map::RouteSearch() {
 };
 
 void Map::WriteMap(std::ostream &os) {
-  os << "   "; 
-  for (size_t a = 0; a < getN(); a++){
+  os << "   ";
+  for (size_t a = 0; a < getN(); a++) {
     os << "    " << std::setfill('0') << std::setw(2) << a;
   }
   for (size_t i = 0; i < getM(); i++) {
@@ -135,3 +128,99 @@ void Map::WriteMap(std::ostream &os) {
   }
   WhiteLine(os);
 };
+
+void Map::StartPreparation() {
+  map_[initial_]->setgScore(0);
+  map_[initial_]->setfScore(Heuristic(initial_, goal_));
+  _path.push_back(initial_);
+  _openSet.push_back(initial_);
+  flag_ = false;
+}
+
+double Map::Heuristic(size_t i, size_t j) {
+  double cost;
+  int aux1 = map_[i]->getI() - map_[j]->getI(),
+      aux2 = map_[i]->getJ() - map_[j]->getJ();
+  cost = std::abs(aux1) + std::abs(aux2);
+  return cost;
+}
+
+std::vector<size_t> Map::getNeighbors(size_t nodeId) {
+  std::vector<size_t> neighbors;
+  /// West comprobation
+  if (map_[nodeId]->getJ() > 0) 
+    neighbors.push_back(nodeId - 1); 
+  /// East comprobation
+  if (map_[nodeId]->getJ() < (getN() - 1)) 
+    neighbors.push_back(nodeId + 1); 
+  /// North comprobation
+  if (map_[nodeId]->getI() > 0) 
+    neighbors.push_back(nodeId - getN()); 
+  /// South comprobation
+  if (map_[nodeId]->getI() < (getM() - 1)) 
+    neighbors.push_back(nodeId + getN());
+
+  return neighbors;
+}
+
+void Map::AStarAlgorithm() {
+  int length_path = 0;
+  int expanded_nodes = 0;
+  StartPreparation();
+  flag_ = false;
+
+  while (!_openSet.empty()) {
+    double lowestF = DBL_MAX;
+    size_t current;
+
+    for (auto it = _openSet.begin(); it != _openSet.end(); it++) {
+      if (map_[*it]->getfScore() < lowestF) {
+        lowestF = map_[*it]->getfScore();
+        current = *it;
+      }
+    }
+
+    if (current == goal_) {
+      flag_ = true;
+      break;
+    } else {
+      auto it = std::find(_openSet.begin(), _openSet.end(), current);
+      _openSet.erase(it);
+      _closedSet.push_back(current);
+      std::vector<size_t> neighbors = getNeighbors(current);
+      for (size_t i = 0; i < neighbors.size(); i++) {
+        auto it = std::find(_closedSet.begin(), _closedSet.end(), neighbors[i]);
+        if (it == _closedSet.end()) {
+          double tentativeGScore = map_[current]->getgScore() + Heuristic(current, neighbors[i]);
+          auto it = std::find(_openSet.begin(), _openSet.end(), neighbors[i]);
+          if (it == _openSet.end()) {
+            expanded_nodes++;
+            _openSet.push_back(neighbors[i]);
+          } else if (tentativeGScore >= map_[neighbors[i]]->getgScore()) {
+            continue;
+          }
+          map_[neighbors[i]]->setCamefrom(current);
+          map_[neighbors[i]]->setgScore(tentativeGScore);
+          map_[neighbors[i]]->setfScore(tentativeGScore + Heuristic(neighbors[i], goal_));
+        }
+      }
+    }
+  }
+  if (flag_) {
+    _path.push_back(goal_);
+    size_t current = map_[goal_]->getCamefrom();
+    while (current != initial_) {
+      length_path++;
+      _path.push_back(current);
+      size_t previous = map_[current]->getCamefrom();
+      map_[current]->setState(3);
+      current = previous;
+    }
+    std::cout << "\n\nHay una camino al destino." << std::endl;
+    std::cout << "\nLongitud del camino mínimo: " << length_path << std::endl;
+    std::cout << "\nNodos expandidos          : " << expanded_nodes << std::endl;
+  } else {
+    std::cout << "¡No hay camino hacia el destino!" << RESET << std::endl;
+  }
+  return;
+}

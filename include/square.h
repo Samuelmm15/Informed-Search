@@ -27,7 +27,7 @@
 #include <cmath>
 #include <iomanip>
 
-/// Definición de los distintos colores necesarios para colorear las distintas casillas.
+/// Definition of the different colors needed to color the different boxes.
 #define BLACK_GRND "\033[1;40m"
 #define WHITE_GRND "\033[1;47m"
 #define RED_GRND "\033[41m"
@@ -50,12 +50,21 @@ class Square {
     void setI(size_t);
     void setJ(size_t);
     void setState(size_t);
+    void setfScore(double);
+    void setgScore(double);
+    void setCamefrom(size_t);
     size_t getI() const;
     size_t getJ() const;
     size_t getState() const;
+    double getgScore();  /// Initial node cost to this node.
+    double getfScore(); /// Estimated cost from initial node to target node.
+    size_t getCamefrom();
     std::ostream& WriteSquare(std::ostream&);
   private:
     size_t i_;
     size_t j_;
     size_t state_;
+    size_t camefrom_;
+    double gScore_;
+    double fScore_;
 };

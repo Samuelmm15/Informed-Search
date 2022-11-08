@@ -38,6 +38,18 @@ void Square::setState(size_t state) {
   state_ = state;
 };
 
+void Square::setgScore(double aux) {
+  gScore_ = aux;
+};
+
+void Square::setfScore(double aux) {
+  fScore_ = aux;
+};
+
+void Square::setCamefrom(size_t pos) {
+  camefrom_ = pos;
+};
+
 size_t Square::getI() const {
   return i_;
 };
@@ -48,6 +60,18 @@ size_t Square::getJ() const {
 
 size_t Square::getState() const {
   return state_;
+};
+
+double Square::getgScore() {
+  return gScore_;
+};
+
+double Square::getfScore() {
+  return fScore_;
+};
+
+size_t Square::getCamefrom() {
+  return camefrom_;
 };
 
 std::ostream& Square::WriteSquare(std::ostream& os) {

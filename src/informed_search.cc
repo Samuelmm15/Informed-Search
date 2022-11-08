@@ -21,13 +21,18 @@
 #include "../include/map.h"
 #include "../include/square.h"
 
-/// Sobrecarga de los operadores de flujo de entrada y salida para mostrar los colores por pantalla.
+/// Overloading input and output flow operators to display colors per screen.
 std::ostream& White  (std::ostream& os) {return os << "\033[0;37m";}
 std::ostream& Cyan   (std::ostream& os) {return os << "\033[0;36m";}
 std::ostream& Green  (std::ostream& os) {return os << "\033[0;32m";}
 std::ostream& Red    (std::ostream& os) {return os << "\033[0;31m";}
 std::ostream& Purple (std::ostream& os) {return os << "\033[0;35m";}
 
+/**
+ * @brief This is the main function of the program.
+ * 
+ * @return int the exist status of the program.
+ */
 int main() {
   size_t rows, cols;
   size_t start_x, start_y;
@@ -81,7 +86,8 @@ int main() {
   Map map(rows, cols, start_x, start_y, goal_x, goal_y);
   map.setInitialState(start_x, start_y);
   map.setGoalState(goal_x, goal_y);
-  map.RouteSearch();
+  map.AStarAlgorithm();
+  // map.RouteSearch();
   map.WriteMap(std::cout);
   std::cout << "LEYENDA: " << Red <<"INICIO"<< Green <<" DESTINO" << Purple <<" RUTA\n" << White;
   return 0;
