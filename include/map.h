@@ -44,6 +44,7 @@ class Map {
     void setN(size_t cols);
     void setStart(size_t start_row, size_t start_col);
     void setGoal(size_t goal_row, size_t goal_col);
+    void setHeuristicFlag(int heuristic_option);
     size_t getM() const;
     size_t getN() const;
     void setInitialState(size_t i, size_t j);
@@ -66,6 +67,7 @@ class Map {
     size_t goal_col_;  // Goal column
     Square **map_;  // Map
     bool flag_;
+    int heuristic_option_;
     std::vector<size_t> _closedSet;
     std::vector<size_t> _openSet;
     std::vector<size_t> _path;

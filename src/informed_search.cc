@@ -83,9 +83,21 @@ int main() {
     }
   } while (continueFlag == false);
 
+  int heuristic_option;
+  std::cout << Green <<"¿Qué tipo de evaluación heurística desea usar para la búsqueda del camino mínimo?" << std::endl;
+  std::cout << Cyan << "1. Distancia Manhattan" << std::endl;
+  std::cout << Cyan << "2. Distancia Euclidea" << RESET << std::endl;
+  std::cout << Purple << "Elige una opción >> " << RESET;
+  std::cin >> heuristic_option;
+  if (heuristic_option != 1 && heuristic_option != 2) {
+    std::cout << "Opción no válida. Se usará la distancia Manhattan por defecto." << std::endl;
+    heuristic_option = 1;
+  }
+
   Map map(rows, cols, start_x, start_y, goal_x, goal_y);
   map.setInitialState(start_x, start_y);
   map.setGoalState(goal_x, goal_y);
+  map.setHeuristicFlag(heuristic_option);
   map.AStarAlgorithm();
   // map.RouteSearch();
   map.WriteMap(std::cout);

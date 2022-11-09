@@ -19,6 +19,13 @@
 
 #include "../include/map.h"
 
+/// Overloading input and output flow operators to display colors per screen.
+std::ostream& White_  (std::ostream& os) {return os << "\033[0;37m";}
+std::ostream& Cyan_   (std::ostream& os) {return os << "\033[0;36m";}
+std::ostream& Green_  (std::ostream& os) {return os << "\033[0;32m";}
+std::ostream& Red_    (std::ostream& os) {return os << "\033[0;31m";}
+std::ostream& Purple_ (std::ostream& os) {return os << "\033[0;35m";}
+
 Map::Map(size_t rows, size_t cols, size_t start_row, size_t start_col, size_t goal_row, size_t goal_col) {
   setM(rows);
   setN(cols);
@@ -46,6 +53,10 @@ void Map::setStart(size_t start_row, size_t start_col) {
 void Map::setGoal(size_t goal_row, size_t goal_col) {
   goal_row_ = goal_row;
   goal_col_ = goal_col;
+};
+
+void Map::setHeuristicFlag(int heuristic_option) { 
+  heuristic_option_ = heuristic_option;
 };
 
 size_t Map::getM() const { return M_; };
@@ -139,9 +150,14 @@ void Map::StartPreparation() {
 
 double Map::Heuristic(size_t i, size_t j) {
   double cost;
-  int aux1 = map_[i]->getI() - map_[j]->getI(),
-      aux2 = map_[i]->getJ() - map_[j]->getJ();
-  cost = std::abs(aux1) + std::abs(aux2);
+  if (heuristic_option_ == 1) {
+    int aux1 = map_[i]->getI() - map_[j]->getI(),
+    aux2 = map_[i]->getJ() - map_[j]->getJ();
+    cost = std::abs(aux1) + std::abs(aux2);
+  }
+  if (heuristic_option_ == 2) {
+    cost = sqrt(((map_[i]->getI() - map_[j]->getI()) * (map_[i]->getI() - map_[j]->getI())) + ((map_[i]->getJ() - map_[j]->getJ())*(map_[i]->getJ() - map_[j]->getJ())));
+  }
   return cost;
 }
 
@@ -216,11 +232,11 @@ void Map::AStarAlgorithm() {
       map_[current]->setState(3);
       current = previous;
     }
-    std::cout << "\n\nHay una camino al destino." << std::endl;
-    std::cout << "\nLongitud del camino mínimo: " << length_path << std::endl;
-    std::cout << "\nNodos expandidos          : " << expanded_nodes << std::endl;
+    std::cout << Green_	<< "\n\n¡Hay una camino al destino!" << std::endl;
+    std::cout << Cyan_ << "\nLongitud del camino mínimo: " << length_path;
+    std::cout << Cyan_ << "\nNodos expandidos: " << expanded_nodes << RESET << std::endl << std::endl;;
   } else {
-    std::cout << "¡No hay camino hacia el destino!" << RESET << std::endl;
+    std::cout << Red_ << "¡No hay camino hacia el destino!" << RESET << std::endl;
   }
   return;
 }
