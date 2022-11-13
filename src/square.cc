@@ -78,13 +78,13 @@ std::ostream& Square::WriteSquare(std::ostream& os) {
   size_t auxiliary = getState();
   switch ( auxiliary ) {
     case 1:
-      os << WHITE_GRND << "  " << RED_GRND << "  " << WHITE_GRND << "  " << RESET;
+      os << WHITE_GRND << "  " << BLUE_GRND << "  " << WHITE_GRND << "  " << RESET;
       break;
     case 2:
       os << WHITE_GRND << "  " << GREEN_GRND << "  " << WHITE_GRND << "  " << RESET;
       break;
     case 3: 
-      os << WHITE_GRND << "  " << MAGENT_GRND << "  " << WHITE_GRND << "  " << RESET;
+      os << WHITE_GRND << "  " << RED_GRND << "  " << WHITE_GRND << "  " << RESET;
       break;
     default:
       os << WHITE_GRND << "  " << BLACK_GRND << "  " << WHITE_GRND << "  " << RESET;

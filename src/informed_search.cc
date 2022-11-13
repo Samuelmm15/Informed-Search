@@ -27,6 +27,7 @@ std::ostream& Cyan   (std::ostream& os) {return os << "\033[0;36m";}
 std::ostream& Green  (std::ostream& os) {return os << "\033[0;32m";}
 std::ostream& Red    (std::ostream& os) {return os << "\033[0;31m";}
 std::ostream& Purple (std::ostream& os) {return os << "\033[0;35m";}
+std::ostream& Blue (std::ostream& os) {return os << "\033[0;44m";}
 
 /**
  * @brief This is the main function of the program.
@@ -84,7 +85,7 @@ int main() {
   } while (continueFlag == false);
 
   int heuristic_option;
-  std::cout << Green <<"¿Qué tipo de evaluación heurística desea usar para la búsqueda del camino mínimo?" << std::endl;
+  std::cout << Green << "\n¿Qué tipo de evaluación heurística desea usar para la búsqueda del camino mínimo?" << std::endl;
   std::cout << Cyan << "1. Distancia Manhattan" << std::endl;
   std::cout << Cyan << "2. Distancia Euclidea" << RESET << std::endl;
   std::cout << Purple << "Elige una opción >> " << RESET;
@@ -101,7 +102,6 @@ int main() {
   map.AStarAlgorithm();
   // map.RouteSearch();
   map.WriteMap(std::cout);
-  std::cout << "LEYENDA: " << Red <<"INICIO"<< Green <<" DESTINO" << Purple <<" RUTA\n" << White;
+  std::cout << "LEYENDA: " << Blue <<"INICIO"<< Green <<" DESTINO" << Purple <<" RUTA\n" << White;
   return 0;
 }
-
