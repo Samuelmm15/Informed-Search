@@ -1,0 +1,59 @@
+\hypertarget{map_8h}{}\doxysection{include/map.h File Reference}
+\label{map_8h}\index{include/map.h@{include/map.h}}
+
+
+This file contains the implementation of the map class.  
+
+
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cfloat$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}../include/square.\+h\char`\"{}}\newline
+Include dependency graph for map.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classMap}{Map}}
+\begin{DoxyCompactList}\small\item\em This class contains the implementation of the map simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the implementation of the map class. 
+
+This file contains the implementation of the different methods of the {\ttfamily \mbox{\hyperlink{classMap}{Map}}} class.
+
+Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Asignatura\+: Inteligencia Artificial Curso\+: 3º Práctica 2\+: Búsqueda Informada
+
+\begin{DoxyAuthor}{Authors}
+Cheuk Kelly Ng Pante (\href{mailto:alu0101364544@ull.edu.es}{\texttt{ alu0101364544@ull.\+edu.\+es}}) Samuel Martín Morales (\href{mailto:alu0101359526@ull.edu.es}{\texttt{ alu0101359526@ull.\+edu.\+es}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/10-\/29
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022
+\end{DoxyCopyright}
+Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Asignatura\+: Inteligencia Artificial currentso\+: 3º Práctica 2\+: Búsqueda Informada
+
+\begin{DoxyAuthor}{Authors}
+Cheuk Kelly Ng Pante (\href{mailto:alu0101364544@ull.edu.es}{\texttt{ alu0101364544@ull.\+edu.\+es}}) Samuel Martín Morales (\href{mailto:alu0101359526@ull.edu.es}{\texttt{ alu0101359526@ull.\+edu.\+es}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/10-\/29
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}

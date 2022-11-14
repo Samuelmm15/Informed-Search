@@ -1,0 +1,278 @@
+\hypertarget{classSquare}{}\doxysection{Square Class Reference}
+\label{classSquare}\index{Square@{Square}}
+
+
+This class contains the implementation of the different squares of the map simulation.  
+
+
+
+
+{\ttfamily \#include $<$square.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSquare_a8ff5b48b662fbc81db908c68ccd1f024}{Square}} (size\+\_\+t, size\+\_\+t)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the {\ttfamily \mbox{\hyperlink{classSquare}{Square}}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSquare_a0d8bc0df995f32ab6882f2df09321edc}{$\sim$\+Square}} ()
+\begin{DoxyCompactList}\small\item\em This is the destructor of the {\ttfamily \mbox{\hyperlink{classSquare}{Square}}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSquare_a7452c7359429d73dae1b730332905242}{setI}} (size\+\_\+t)
+\begin{DoxyCompactList}\small\item\em This function sets the row of the square. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSquare_a2a9a67e94f9e590f4c11dafafa5ae332}{setJ}} (size\+\_\+t)
+\begin{DoxyCompactList}\small\item\em This function sets the column of the square. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSquare_a71cc2aca83c5bae3b126c3a3a4d1bb1b}{set\+State}} (size\+\_\+t)
+\begin{DoxyCompactList}\small\item\em This function sets the state of the square. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSquare_add4f8e668264697694181754d7b22086}{setf\+Score}} (double)
+\begin{DoxyCompactList}\small\item\em This method sets the scrore of the square. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSquare_a3b4d407b7e81788f117989c8cc0d6b8d}{setg\+Score}} (double)
+\begin{DoxyCompactList}\small\item\em This method sets the score of the square. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSquare_a3e89381207e481fc4fadc900d6fed1d3}{set\+Camefrom}} (size\+\_\+t)
+\begin{DoxyCompactList}\small\item\em This method sets the camefrom of the square. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classSquare_a2a6fdb4983c0ee645d8b8c04fa6d93be}{getI}} () const
+\begin{DoxyCompactList}\small\item\em This function gets the row of the square. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classSquare_a6a0eb9f9b4ecacdffe5db904a828e943}{getJ}} () const
+\begin{DoxyCompactList}\small\item\em This function gets the column of the square. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classSquare_afe49493821e3cbb90e7ee0cddd16149d}{get\+State}} () const
+\begin{DoxyCompactList}\small\item\em This function gets the state of the square. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classSquare_a93ddaea43b03b237510f41d260955bee}{getg\+Score}} ()
+\begin{DoxyCompactList}\small\item\em This method gets the score of the square. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classSquare_a51b0dd1d28b3a6e548d940feebca9b22}{getf\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Initial node cost to this node. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classSquare_a9212983f012e6266a014a9f5801b7723}{get\+Camefrom}} ()
+\begin{DoxyCompactList}\small\item\em Estimated cost from initial node to target node. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{classSquare_a219d55306acca502c3d093a07e98855f}{Write\+Square}} (std\+::ostream \&)
+\begin{DoxyCompactList}\small\item\em This function prints the square. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class contains the implementation of the different squares of the map simulation. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSquare_a8ff5b48b662fbc81db908c68ccd1f024}\label{classSquare_a8ff5b48b662fbc81db908c68ccd1f024}} 
+\index{Square@{Square}!Square@{Square}}
+\index{Square@{Square}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{Square()}{Square()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSquare}{Square}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})}
+
+
+
+This is the constructor of the {\ttfamily \mbox{\hyperlink{classSquare}{Square}}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The row of the square. \\
+\hline
+{\em j} & The column of the \mbox{\hyperlink{classSquare}{Square}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSquare_a0d8bc0df995f32ab6882f2df09321edc}\label{classSquare_a0d8bc0df995f32ab6882f2df09321edc}} 
+\index{Square@{Square}!````~Square@{$\sim$Square}}
+\index{````~Square@{$\sim$Square}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{$\sim$Square()}{~Square()}}
+{\footnotesize\ttfamily $\sim$\mbox{\hyperlink{classSquare}{Square}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is the destructor of the {\ttfamily \mbox{\hyperlink{classSquare}{Square}}} class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSquare_a9212983f012e6266a014a9f5801b7723}\label{classSquare_a9212983f012e6266a014a9f5801b7723}} 
+\index{Square@{Square}!getCamefrom@{getCamefrom}}
+\index{getCamefrom@{getCamefrom}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{getCamefrom()}{getCamefrom()}}
+{\footnotesize\ttfamily size\+\_\+t get\+Camefrom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Estimated cost from initial node to target node. 
+
+This method gets the camefrom of the square.
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSquare_a51b0dd1d28b3a6e548d940feebca9b22}\label{classSquare_a51b0dd1d28b3a6e548d940feebca9b22}} 
+\index{Square@{Square}!getfScore@{getfScore}}
+\index{getfScore@{getfScore}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{getfScore()}{getfScore()}}
+{\footnotesize\ttfamily double getf\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initial node cost to this node. 
+
+This method gets the score of the square.
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSquare_a93ddaea43b03b237510f41d260955bee}\label{classSquare_a93ddaea43b03b237510f41d260955bee}} 
+\index{Square@{Square}!getgScore@{getgScore}}
+\index{getgScore@{getgScore}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{getgScore()}{getgScore()}}
+{\footnotesize\ttfamily double getg\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This method gets the score of the square. 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSquare_a2a6fdb4983c0ee645d8b8c04fa6d93be}\label{classSquare_a2a6fdb4983c0ee645d8b8c04fa6d93be}} 
+\index{Square@{Square}!getI@{getI}}
+\index{getI@{getI}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{getI()}{getI()}}
+{\footnotesize\ttfamily size\+\_\+t getI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+This function gets the row of the square. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t The row of the square. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSquare_a6a0eb9f9b4ecacdffe5db904a828e943}\label{classSquare_a6a0eb9f9b4ecacdffe5db904a828e943}} 
+\index{Square@{Square}!getJ@{getJ}}
+\index{getJ@{getJ}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{getJ()}{getJ()}}
+{\footnotesize\ttfamily size\+\_\+t getJ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+This function gets the column of the square. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSquare_afe49493821e3cbb90e7ee0cddd16149d}\label{classSquare_afe49493821e3cbb90e7ee0cddd16149d}} 
+\index{Square@{Square}!getState@{getState}}
+\index{getState@{getState}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily size\+\_\+t get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+This function gets the state of the square. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSquare_a3e89381207e481fc4fadc900d6fed1d3}\label{classSquare_a3e89381207e481fc4fadc900d6fed1d3}} 
+\index{Square@{Square}!setCamefrom@{setCamefrom}}
+\index{setCamefrom@{setCamefrom}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{setCamefrom()}{setCamefrom()}}
+{\footnotesize\ttfamily void set\+Camefrom (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{pos }\end{DoxyParamCaption})}
+
+
+
+This method sets the camefrom of the square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSquare_add4f8e668264697694181754d7b22086}\label{classSquare_add4f8e668264697694181754d7b22086}} 
+\index{Square@{Square}!setfScore@{setfScore}}
+\index{setfScore@{setfScore}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{setfScore()}{setfScore()}}
+{\footnotesize\ttfamily void setf\+Score (\begin{DoxyParamCaption}\item[{double}]{aux }\end{DoxyParamCaption})}
+
+
+
+This method sets the scrore of the square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em aux} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSquare_a3b4d407b7e81788f117989c8cc0d6b8d}\label{classSquare_a3b4d407b7e81788f117989c8cc0d6b8d}} 
+\index{Square@{Square}!setgScore@{setgScore}}
+\index{setgScore@{setgScore}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{setgScore()}{setgScore()}}
+{\footnotesize\ttfamily void setg\+Score (\begin{DoxyParamCaption}\item[{double}]{aux }\end{DoxyParamCaption})}
+
+
+
+This method sets the score of the square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em aux} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSquare_a7452c7359429d73dae1b730332905242}\label{classSquare_a7452c7359429d73dae1b730332905242}} 
+\index{Square@{Square}!setI@{setI}}
+\index{setI@{setI}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{setI()}{setI()}}
+{\footnotesize\ttfamily void setI (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+
+
+This function sets the row of the square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The row of the square. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSquare_a2a9a67e94f9e590f4c11dafafa5ae332}\label{classSquare_a2a9a67e94f9e590f4c11dafafa5ae332}} 
+\index{Square@{Square}!setJ@{setJ}}
+\index{setJ@{setJ}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{setJ()}{setJ()}}
+{\footnotesize\ttfamily void setJ (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})}
+
+
+
+This function sets the column of the square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em j} & The column of the square. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSquare_a71cc2aca83c5bae3b126c3a3a4d1bb1b}\label{classSquare_a71cc2aca83c5bae3b126c3a3a4d1bb1b}} 
+\index{Square@{Square}!setState@{setState}}
+\index{setState@{setState}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily void set\+State (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{state }\end{DoxyParamCaption})}
+
+
+
+This function sets the state of the square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The state of the square. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSquare_a219d55306acca502c3d093a07e98855f}\label{classSquare_a219d55306acca502c3d093a07e98855f}} 
+\index{Square@{Square}!WriteSquare@{WriteSquare}}
+\index{WriteSquare@{WriteSquare}!Square@{Square}}
+\doxysubsubsection{\texorpdfstring{WriteSquare()}{WriteSquare()}}
+{\footnotesize\ttfamily std\+::ostream \& Write\+Square (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})}
+
+
+
+This function prints the square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::ostream\& 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{square_8h}{square.\+h}}\item 
+src/\mbox{\hyperlink{square_8cc}{square.\+cc}}\end{DoxyCompactItemize}

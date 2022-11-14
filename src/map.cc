@@ -9,7 +9,7 @@
  * @file map.h
  * @authors Cheuk Kelly Ng Pante (alu0101364544@ull.edu.es)
  *          Samuel Martín Morales (alu0101359526@ull.edu.es)
- * @brief
+ * @brief This file contains the implementation of the different methods of the `Map` class.
  * @version 0.1
  * @date 2022-10-29
  *
@@ -26,6 +26,16 @@ std::ostream& Green_  (std::ostream& os) {return os << "\033[0;32m";}
 std::ostream& Red_    (std::ostream& os) {return os << "\033[0;31m";}
 std::ostream& Purple_ (std::ostream& os) {return os << "\033[0;35m";}
 
+/**
+ * @brief This is the constructor of the `Map` class.
+ * 
+ * @param rows The number of rows of the map.
+ * @param cols The number of the columns of the map.
+ * @param start_row The row of the starting position.
+ * @param start_col The column of the starting position.
+ * @param goal_row The row of the goal position.
+ * @param goal_col The column of the goal position.
+ */
 Map::Map(size_t rows, size_t cols, size_t start_row, size_t start_col, size_t goal_row, size_t goal_col) {
   setM(rows);
   setN(cols);
@@ -39,42 +49,100 @@ Map::Map(size_t rows, size_t cols, size_t start_row, size_t start_col, size_t go
   }
 };
 
+/**
+ * @brief This is the destructor of the `Map` class.
+ * 
+ */
 Map::~Map(){};
 
+/**
+ * @brief This method sets the number of rows of the map.
+ * 
+ * @param rows The number of rows of the map.
+ */
 void Map::setM(size_t rows) { M_ = rows; };
 
+/**
+ * @brief This method sets the number of columns of the map.
+ * 
+ * @param cols The number of columns of the map.
+ */
 void Map::setN(size_t cols) { N_ = cols; };
-
+/**
+ * @brief This method sets the starting position of the map.
+ * 
+ * @param start_row The row of the starting position.
+ * @param start_col The column of the starting position.
+ */
 void Map::setStart(size_t start_row, size_t start_col) {
   start_row_ = start_row;
   start_col_ = start_col;
 };
 
+/**
+ * @brief This method sets the goal position of the map.
+ * 
+ * @param goal_row This is the row of the goal position.
+ * @param goal_col This is column of the goal position.
+ */
 void Map::setGoal(size_t goal_row, size_t goal_col) {
   goal_row_ = goal_row;
   goal_col_ = goal_col;
 };
 
+/**
+ * @brief This method stablishes the value of the heuristic option.
+ * 
+ * @param heuristic_option The heuristic option selected.
+ */
 void Map::setHeuristicFlag(int heuristic_option) { 
   heuristic_option_ = heuristic_option;
 };
 
+/**
+ * @brief This method returns the number of rows of the map.
+ * 
+ * @return size_t 
+ */
 size_t Map::getM() const { return M_; };
 
+/**
+ * @brief This method returns the number of columns of the map.
+ * 
+ * @return size_t 
+ */
 size_t Map::getN() const { return N_; };
 
+/**
+ * @brief This method sets the initial state of the map.
+ * 
+ * @param i The row of the initial state.
+ * @param j The column of the initial state.
+ */
 void Map::setInitialState(size_t i, size_t j) {
   initial_ = i * getN() + j;
   map_[i * getN() + j]->setState(1);
   setStart(i, j);
 };
 
+/**
+ * @brief This method sets the goal state of the map.
+ * 
+ * @param i The row of the goal state.
+ * @param j The column of the goal state.
+ */
 void Map::setGoalState(size_t i, size_t j) {
   goal_ = i * getN() + j;
   map_[i * getN() + j]->setState(2);
   setGoal(i, j);
 };
 
+/**
+ * @brief This method prints the map correctly.
+ * 
+ * @param os 
+ * @return std::ostream& 
+ */
 std::ostream &Map::WhiteLine(std::ostream &os) {
   size_t count = 0;
   os << "\n" << "    " << WHITE_GRND << " ";
@@ -86,6 +154,11 @@ std::ostream &Map::WhiteLine(std::ostream &os) {
 
   return os;
 }
+
+/**
+ * @brief This method prints the map. It was a beta test to check if the route was being created correctly.
+ * 
+ */
 
 void Map::RouteSearch() {
   if (start_row_ <= goal_row_) {
@@ -124,6 +197,11 @@ void Map::RouteSearch() {
   }
 };
 
+/**
+ * @brief This method prints the map.
+ * 
+ * @param os 
+ */
 void Map::WriteMap(std::ostream &os) {
   os << "   ";
   for (size_t a = 0; a < getN(); a++) {
@@ -140,6 +218,10 @@ void Map::WriteMap(std::ostream &os) {
   WhiteLine(os);
 };
 
+/**
+ * @brief This method prepare the initial map to search trough it.
+ * 
+ */
 void Map::StartPreparation() {
   map_[initial_]->setgScore(0);
   map_[initial_]->setfScore(Heuristic(initial_, goal_));
@@ -148,6 +230,13 @@ void Map::StartPreparation() {
   flag_ = false;
 }
 
+/**
+ * @brief This method calculates the heuristic value of a given state.
+ * 
+ * @param i The row position.
+ * @param j The column position.
+ * @return double 
+ */
 double Map::Heuristic(size_t i, size_t j) {
   double cost;
   if (heuristic_option_ == 1) {
@@ -161,6 +250,12 @@ double Map::Heuristic(size_t i, size_t j) {
   return cost;
 }
 
+/**
+ * @brief This method calculates the neighbors of a given state.
+ * 
+ * @param nodeId The identification of the square.
+ * @return std::vector<size_t> 
+ */
 std::vector<size_t> Map::getNeighbors(size_t nodeId) {
   std::vector<size_t> neighbors;
   /// West comprobation
@@ -179,6 +274,10 @@ std::vector<size_t> Map::getNeighbors(size_t nodeId) {
   return neighbors;
 }
 
+/**
+ * @brief This method calculates de A* algorithm.
+ * 
+ */
 void Map::AStarAlgorithm() {
   int length_path = 0;
   int expanded_nodes = 0;
